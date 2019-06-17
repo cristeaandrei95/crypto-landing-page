@@ -1,62 +1,53 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Counter() {
-    const [ time, setTime ] = useState();
-    
-    useEffect(() => {
-        var countdownDate = new Date();
-        var numberOfDaysToAdd = 7;
-        countdownDate.setDate(countdownDate.getDate() + numberOfDaysToAdd); 
-        let days, hours, minutes, seconds;
-          
-          endDate = new Date(endDate).getTime();
-          
-          if (isNaN(endDate)) {
-            return;
-          }
-          
-          setInterval(calculate, 1000);
-          
-          function calculate() {
-            let startDate = new Date();
-            startDate = startDate.getTime();
-            
-            let timeRemaining = parseInt((endDate - startDate) / 1000);
-            
-            if (timeRemaining >= 0) {
-                days = parseInt(timeRemaining / 86400);
-                timeRemaining = (timeRemaining % 86400);
-              
-                hours = parseInt(timeRemaining / 3600);
-                timeRemaining = (timeRemaining % 3600);
-              
-                minutes = parseInt(timeRemaining / 60);
-                timeRemaining = (timeRemaining % 60);
-              
-                seconds = parseInt(timeRemaining);
+const endDate = new Date();
+const numberOfDaysToAdd = 7;
+endDate.setDate(endDate.getDate() + numberOfDaysToAdd); 
 
-                setTime({ 
-                    days:  parseInt(days, 10);
-                    hours: ("0" + hours).slice(-2);
-                    minutes: ("0" + minutes).slice(-2);
-                    seconds: ("0" + seconds).slice(-2);
-                )
-            } else {
-              return;
+export default function Counter() {
+    const [ time, setTime ] = useState({});
+      
+    useEffect(() => {
+        const countdown = endDate => { 
+            const t = Date.parse(endDate) - Date.parse(new Date());
+            const seconds = Math.floor( (t/1000) % 60 );
+            const minutes = Math.floor( (t/1000/60) % 60 );
+            const hours = Math.floor( (t/(1000*60*60)) % 24 );
+            const days = Math.floor( t/(1000*60*60*24) );
+            let time;
+
+            return {
+                'total': t,
+                'days': days <= 9 ? `0${days}` : days,
+                'hours': hours <= 9 ? `0${hours}` : hours,
+                'minutes': minutes <= 9 ? `0${minutes}` : minutes,
+                'seconds': seconds <= 9 ? `0${seconds}` : seconds
+            };
+        }
+
+       const interval = setInterval(() => {
+            const time = countdown(endDate);
+            setTime(time);
+
+            if (time.total <= 0) {
+                clearInterval(interval);
+
+                return;
             }
-          }
+        }, 1000);
 
         return () => {
-        
+             clearInterval(interval);
+       
         }
     });
 
     return (
         <div className="counter">
-            <Block time={time.dd} label="days"/>
-            <Block time={time.hh} label="hours"/>
-            <Block time={time.min} label="minutes"/>
-            <Block time={time.sec} label="seconds"/>
+            <Block time={time.days} label="days"/>
+            <Block time={time.hours} label="hours"/>
+            <Block time={time.minutes} label="minutes"/>
+            <Block time={time.seconds} label="seconds"/>
         </div>
     )
 }
