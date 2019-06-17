@@ -1,0 +1,309 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+}
+
+button:focus {
+    outline: none;
+}
+
+.app {
+    text-align: center;
+    background: url('./assets/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left bottom;
+    width: 100%;
+    height: 100vh;
+}
+
+/* header */
+
+header {
+    display: table;
+    width: 100%;
+    padding: 1.8rem;
+}
+
+.logo {
+    width: 10%;
+    display: table-cell;
+}
+
+.logo > a > img {
+    width: 6rem;
+}
+
+nav {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+    width: 90%;
+    padding: 0 6rem;
+}
+
+nav > a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+nav > a:not(.whitepaper):hover {
+    box-shadow: inset 0px 0px 0px 1px #fff;
+    border-radius: 5px;
+}
+
+nav > a.whitepaper {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+}
+
+nav > a.whitepaper > img {
+    height: 3rem;
+    position: relative;
+    top: 1rem;
+    right: 5px;
+}
+
+
+/* content */
+
+section#main {
+    height: calc( 100% - 93px );
+    display: table;
+}
+
+div.col-left {
+    height: 100%;
+    width: 60%;
+    text-align: left;
+    padding: 12rem 10rem;
+    display: table-cell;
+}
+
+div.col-left > span {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+div.col-left > h1 {
+    color: #fff;
+    font-size: 3.6rem;
+    margin: 1rem 0 0 0;
+}
+
+div.col-left > p {
+    color: #999;
+    font-size: 1.2rem;
+    line-height: 2.6rem;
+}
+
+.cta-howItWorks {
+   display: table;
+    margin-top: 4rem;
+}
+.cta-howItWorks > a {
+    text-decoration: none;
+}
+
+.cta-howItWorks > a > div {
+    background-color: #fff;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    display: table-cell;
+    position: relative;
+}
+
+.cta-howItWorks > a > div:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid #999;
+    left: 1.7rem;
+    top: 1.2rem;
+}
+
+.cta-howItWorks > a > span {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 3rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    position: relative;
+}
+
+.cta-howItWorks > a > span:before {
+    content: "";
+    width: 2.2rem;
+    height: 1px;
+    position: absolute;
+    background-color: #999;
+    bottom: 5px;
+}
+
+div.col-right {
+    height: 100%;
+    width: 40%;
+    display: table-cell;
+    padding-right: 10rem;
+}
+
+div.col-right > div.wrapper {
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    padding: 2rem;
+    text-align: left;
+}
+
+div.wrapper h2 {
+    font-size: 1.6rem;
+}
+
+div.wrapper h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+div.wrapper .counter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    height: 70px;
+    margin-top: 30px;
+}
+
+.counter .counter__block {
+    flex-basis: calc(25% - 20px);
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px 0px #999;
+    text-align: center;
+    padding-top: 1rem;
+    position: relative;
+}
+
+.counter .counter__block:after {
+    content: ":";
+    font-size: 2rem;
+    position: absolute;
+    top: 2.5rem;
+    right: -1.5rem;
+}
+.counter .counter__block:last-child:after {
+    display: none;
+}
+.counter .counter__block span {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+.counter .counter__block p {
+    color: #8d67f6;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.progressBar__wrapper {
+    position: relative;
+    padding-top: 60px;
+}
+
+.progressBar {
+    background-color: #fff;
+    border-radius: 50px;
+    width: 100%;
+    height: 20px;
+    padding: 3px;
+}
+
+.progress {
+    background-color: #ffeded;
+    height: 100%;
+    border-radius: 50px;
+}
+
+.progress__inner {
+    height: 100%;
+    width: 70%;
+    border-radius: 50px;
+    background: linear-gradient(to right, #6044b5 , red);
+}
+
+.tooltip {
+    width: 165px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+.tooltip:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fff;
+    position: absolute;
+    top: 34px;
+    right: 18px;
+}
+
+.infobox {
+    padding-top: 10px;
+}
+
+.infobox p {
+    font-size: 1rem;
+    color: #999
+}
+
+.infobox p span {
+    font-size: 1rem;
+    color: #000;
+    font-weight: 600;
+}
+
+button.join {
+    height: 40px;
+    border: 0;
+    width: 100%;
+    background: linear-gradient(to right, #6044b5 , red);
+    border-radius: 3px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.bonus {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
