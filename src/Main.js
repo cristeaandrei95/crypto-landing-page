@@ -17,10 +17,11 @@ export default class Main extends Component {
                         <Counter />
                         <h3>Token sale ends september 12, 2018</h3>
                         <div className="progressBar__wrapper">
-                            <div className="tooltip">Funded: 68% = $38 000 000</div>
                             <div className="progressBar">
                                 <div className="progress">
-                                    <div className="progress__inner"></div>
+                                    <div className="progress__inner">
+                                        <div className="tooltip">Funded: 68% = $38 000 000</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

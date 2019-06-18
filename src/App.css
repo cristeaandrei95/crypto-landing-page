@@ -28,14 +28,16 @@ button:focus {
 /* header */
 
 header {
-    display: table;
     width: 100%;
     padding: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
 }
 
 .logo {
     width: 10%;
-    display: table-cell;
+    flex: 1;
 }
 
 .logo > a > img {
@@ -43,11 +45,9 @@ header {
 }
 
 nav {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-    width: 90%;
-    padding: 0 6rem;
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 nav > a {
@@ -65,32 +65,35 @@ nav > a:not(.whitepaper):hover {
 
 nav > a.whitepaper {
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
     border-radius: 5px;
     margin-left: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 nav > a.whitepaper > img {
     height: 3rem;
-    position: relative;
-    top: 1rem;
-    right: 5px;
+    margin-right: 10px;
 }
 
 
 /* content */
 
 section#main {
-    height: calc( 100% - 93px );
-    display: table;
+    display: flex;
+    min-height: 100%;
+    height: 100%;
+    align-items: center;
+    overflow-y: scroll;
+    flex-wrap: wrap;
 }
 
 div.col-left {
-    height: 100%;
-    width: 60%;
     text-align: left;
-    padding: 12rem 10rem;
-    display: table-cell;
+    padding: 0 10rem;
+    min-width: 100%;
+    min-height: 100vh;
+    padding-top: 200px;
 }
 
 div.col-left > span {
@@ -112,11 +115,11 @@ div.col-left > p {
 }
 
 .cta-howItWorks {
-   display: table;
     margin-top: 4rem;
 }
 .cta-howItWorks > a {
     text-decoration: none;
+    display: flex;
 }
 
 .cta-howItWorks > a > div {
@@ -124,7 +127,6 @@ div.col-left > p {
     height: 40px;
     width: 40px;
     border-radius: 50px;
-    display: table-cell;
     position: relative;
 }
 
@@ -141,7 +143,6 @@ div.col-left > p {
 }
 
 .cta-howItWorks > a > span {
-    display: table-cell;
     vertical-align: middle;
     padding-left: 3rem;
     color: #fff;
@@ -160,10 +161,8 @@ div.col-left > p {
 }
 
 div.col-right {
-    height: 100%;
-    width: 40%;
-    display: table-cell;
-    padding-right: 10rem;
+    padding: 2rem;
+    width: 100%;
 }
 
 div.col-right > div.wrapper {
@@ -248,10 +247,11 @@ div.wrapper .counter {
     width: 70%;
     border-radius: 50px;
     background: linear-gradient(to right, #6044b5 , red);
+    position: relative;
 }
 
 .tooltip {
-    width: 165px;
+     width: 165px;
     background-color: #fff;
     border-radius: 5px;
     padding: 10px 15px;
@@ -259,8 +259,8 @@ div.wrapper .counter {
     font-weight: 600;
     text-transform: uppercase;
     position: absolute;
-    top: 10px;
-    left: 50px;
+    top: -50px;
+    right: -10px;
 }
 
 .tooltip:before {
@@ -271,8 +271,8 @@ div.wrapper .counter {
     border-right: 8px solid transparent;
     border-top: 8px solid #fff;
     position: absolute;
-    top: 34px;
-    right: 18px;
+    top: 31px;
+    right: 10px;
 }
 
 .infobox {
@@ -306,4 +306,79 @@ button.join {
     color: #fff;
     font-size: 1.2rem;
     font-weight: normal;
+}
+
+.drawer__modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #0009;
+    z-index: 1;
+}
+
+.drawer__modal-hidden {
+    display: none;
+}
+
+.drawer__modal ul {
+    flex: 1 1;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.drawer__modal ul li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.drawer__modal ul li a {
+    color: #fff;
+}
+
+.drawer__hamburger {
+    width: 40px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 50px;
+    position: relative;
+}
+
+.drawer__hamburger::before, .drawer__hamburger::after {
+    content: "";
+    width: 40px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 50px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.drawer__hamburger::after {
+    top: 20px; 
+}
+
+@media only screen and (min-width: 780px) {
+div.col-left {
+        min-width: auto;
+        min-height: auto;
+        width: 50%;
+        padding-top: 0;
+        flex: 1;
+    }
+    div.col-right {
+        padding-right: 10rem;
+        max-width: 500px;
+        min-width: 400px;
+        flex: 1;
+    }
+    nav {
+        display: flex; 
+    }
 }
