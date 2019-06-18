@@ -1,36 +1,28 @@
 import React, { Component, useState } from 'react'; 
 import Logo from './assets/logo.png';
 import Download from './assets/download.png';
+import Modal from './components/Modal.js';
+
+const modalRoot = document.getElementById('modals');
 
 function Drawer() {
     const [ drawer, toggleDrawer ] = useState(false);
 
     return (
-        <div class="drawer__wrapper">
-            <div class="drawer__hamburger" onClick={() => toggleDrawer(!drawer)}></div>
-            <div class={`drawer__modal${!drawer ? '-hidden' : ''}`} >
-                <div class="drawer__close" onClick={() => toggleDrawer(!drawer)}></div>
-                <ul> 
-                    <li>
-                        <a href="#">news</a>
-                    </li>
-                    <li>
-                        <a href="#">roadmap</a>
-                    </li>
-                    <li>
-                        <a href="#">raising money</a>
-                    </li>
-                    <li>
-                        <a href="#">ico payment</a>
-                    </li>
-                    <li>
-                        <a href="#">ico payment</a>
-                    </li>
-                    <li>
-                        <a href="#">faq</a>
-                    </li>
-                </ul>
-            </div>
+        <div className="drawer__wrapper">
+            <div className={`drawer__hamburger${drawer ? '-hidden' : ''}`} onClick={() => toggleDrawer(!drawer)}></div>
+            <Modal>
+                <div className={`drawer__modal${!drawer ? '-hidden' : ''}`} >
+                    <div className="drawer__close" onClick={() => toggleDrawer(!drawer)}>&times;</div>
+                    <ul>
+                        {['news', 'roadmap', 'raising money', 'team', 'ico payment', 'faq'].map(route => (
+                            <li>
+                                <a href="#" onClick={() => toggleDrawer(!drawer)}>{route}</a>
+                            </li>
+                        ))} 
+                    </ul>
+                </div>
+            </Modal>
         </div>
     )
 }
@@ -46,12 +38,7 @@ export default class Header extends Component {
                 </a>
             </div>
             <nav>
-                <a href="#">news</a>
-                <a href="#">roadmap</a>
-                <a href="#">raising money</a>
-                <a href="#">team</a>
-                <a href="#">ico payment</a>
-                <a href="#">faq</a>
+                {['news', 'roadmap', 'raising money', 'team', 'ico payment', 'faq'].map(route => <a href="#" >{route}</a> )} 
                 <a href="#" className="whitepaper">
                     <img src={Download} alt="download file ico"/>
                     whitepaper

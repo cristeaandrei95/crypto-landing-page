@@ -37,7 +37,7 @@ header {
 
 .logo {
     width: 10%;
-    flex: 1;
+    flex: none;
 }
 
 .logo > a > img {
@@ -339,6 +339,11 @@ button.join {
 }
 .drawer__modal ul li a {
     color: #fff;
+    flex: 1;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.2rem;
 }
 
 .drawer__hamburger {
@@ -347,6 +352,8 @@ button.join {
     background-color: #fff;
     border-radius: 50px;
     position: relative;
+    top: 10px;
+    left: 10px;
 }
 
 .drawer__hamburger::before, .drawer__hamburger::after {
@@ -362,6 +369,17 @@ button.join {
 
 .drawer__hamburger::after {
     top: 20px; 
+}
+
+
+.drawer__close {
+    text-align: center;
+    position: absolute;
+    left: 32px;
+    top: 4px;
+    font-size: 54px;
+    display: flex;
+    color: #fff;
 }
 
 @media only screen and (min-width: 780px) {
@@ -380,5 +398,10 @@ div.col-left {
     }
     nav {
         display: flex; 
+        flex: 1;
     }
+    .drawer__hamburger {
+        display: none; 
+    }
+
 }
